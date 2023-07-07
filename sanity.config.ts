@@ -1,5 +1,7 @@
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
+import { media } from 'sanity-plugin-media'
+import { visionTool } from '@sanity/vision';
 import schemas from './sanity/schemas'
 
 const config = defineConfig({
@@ -8,7 +10,7 @@ const config = defineConfig({
     title: 'Fast Music',
     apiVersion: '2023-07-02',
     basePath: '/studio',
-    plugins: [deskTool()],
+    plugins: [deskTool(), media(), visionTool()],
     schema: {
         types: schemas
     }

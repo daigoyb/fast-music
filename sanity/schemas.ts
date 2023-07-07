@@ -1,5 +1,6 @@
 import { SchemaTypeDefinition } from '@sanity/types'
+import { homeSchema } from './schemas/home.schema';
 
-const schemas: SchemaTypeDefinition[] = [];
+const schemas: SchemaTypeDefinition[] = [homeSchema];
 
 export default schemas;
