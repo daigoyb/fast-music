@@ -5,12 +5,12 @@ import Image from "next/image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronCircleLeft, faChevronCircleRight, faCircle, faDotCircle } from "@fortawesome/free-solid-svg-icons"
 
-type tCarousel = {
-    slides: tCarouselItem[];
+type Carousel = {
+    slides: CarouselItem[];
     carouselTimer: number;
 }
 
-type tCarouselItem = {
+type CarouselItem = {
     imgUrl: string;
     title?: string;
     subTitle?: string;
@@ -30,7 +30,7 @@ export default function Carousel() {
     useEffect(() => {
         const timer = setTimeout(() => {
             nextSlide();
-        }, 5000)
+        }, 8000)
 
         return () => clearTimeout(timer)
     })
@@ -62,21 +62,21 @@ export default function Carousel() {
                 />
             </div>
             {/* arrow right */}
-            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] right-5 text-4xl rounded-full p-2 text-primary_300/30 cursor-pointer hover:text-primary_500/50'>
+            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] right-5 text-4xl rounded-full p-2 text-white/50 cursor-pointer hover:text-primary_500/50'>
                 <FontAwesomeIcon onClick={nextSlide} icon={faChevronCircleRight}/>
             </div>
             {/* arrow left */}
-            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] left-5 text-4xl rounded-full p-2 text-primary_300/30 cursor-pointer hover:text-primary_500/50'>
+            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] left-5 text-4xl rounded-full p-2 text-white/50 cursor-pointer hover:text-primary_500/50'>
                 <FontAwesomeIcon onClick={prevSlide} icon={faChevronCircleLeft} />
             </div>
             {/* title */}
-            <div className='absolute top-[65%] lg:top-[75%] p-2 md:p-4 text-white'>
+            <div className='absolute left-8 top-[65%] lg:top-[75%] p-2 md:p-4 text-white'>
                 <h2 className='text-3xl md:text-6xl'>Titulo principal</h2>
                 <h4 className='mt-1/2 md:mt-4 text-xl md:text-3xl'>Titulo secundário</h4>
             </div>
-            <div className="flex gap-3 top-4 justify-center py-2">
-                {carouselPhotos.map((ph, index) => (
-                    <div key={index} className="text-lg text-white">
+            <div className="absolute left-[50%] top-[90%] flex gap-3 justify-center py-2">
+                {carouselPhotos.map((_ph, index) => (
+                    <div key={index} className="text-lg text-white hover:text-primary_300 transition">
                         <FontAwesomeIcon onClick={() => goToSlide(index)} icon={currentIndex === index ? faDotCircle : faCircle}/>
                     </div>
                 ))}

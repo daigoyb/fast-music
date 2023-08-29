@@ -9,7 +9,7 @@ import Carousel from '@/components/Carousel';
 
 export default function Home() {
   return (
-    <main className="max-w-[2880px] mx-4 md:mx-auto">
+    <main className="max-w-[1880px] mx-4 md:mx-auto">
       <header>
           <div className='mx-4 md:flex md:justify-between'>
             <div className='flex justify-center'>
