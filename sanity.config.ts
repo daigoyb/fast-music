@@ -11,6 +11,7 @@ import {
     projectUsersWidget,
     projectInfoWidget
 } from '@sanity/dashboard';
+import { iconPicker } from 'sanity-plugin-icon-picker';
 import { GiGuitar } from 'react-icons/gi'
 
 const config = defineConfig({
@@ -28,7 +29,9 @@ const config = defineConfig({
             projectUsersWidget(),
             projectInfoWidget()
         ]}),
-        media(), visionTool()
+        media(), 
+        visionTool(),
+        iconPicker()
     ],
     schema: {
         types: schemas
