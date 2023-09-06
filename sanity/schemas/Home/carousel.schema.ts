@@ -49,7 +49,7 @@ export const carouselType = defineType({
         })
     ],
     validation: (rule) => [
-        rule.max(8).warning('O carrossel pode ter até 8 itens'),
-        rule.min(2).warning('O carrossel deve ter no mínimo 2 itens')
+        rule.max(8).error('O carrossel pode ter até 8 itens'),
+        rule.min(2).error('O carrossel deve ter no mínimo 2 itens')
     ]
 });

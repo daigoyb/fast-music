@@ -2,6 +2,7 @@ import { DeskToolOptions } from "sanity/desk"
 import { BsFillGearFill } from 'react-icons/bs'
 import { getDefaultDocumentNode } from './defaultDocumentNode.config'
 import { AiOutlineHome } from 'react-icons/ai';
+import { RiPagesFill } from 'react-icons/ri'
 
 
 const excludedSiteIds = ['siteSettings', 'home', 'carouselItem']
@@ -21,6 +22,13 @@ export const deskToolConfig: DeskToolOptions = {
                         .documentId('home')
                         .title('Home page')
                 ),
+            S.listItem()
+                .title('Pages')
+                .icon(RiPagesFill)
+                .child(
+                    S.list()
+                        .title('Pages')
+                ),
             ...S.documentTypeListItems().filter(listItem => !excludedSiteIds.includes(listItem.getId()!)),
             S.divider(),
             S.listItem()
@@ -31,12 +39,12 @@ export const deskToolConfig: DeskToolOptions = {
                     .title('Settings Documents')
                     .items([
                         S.listItem()
-                            .title('Metadata')
+                            .title('Configurações')
                             .child(              
                                 S.document()
                                     .schemaType('siteSettings')
                                     .documentId('siteSettings')
-                                    .title('Meta data')
+                                    .title('Configuração básica')
                             ),
                     ])
             )

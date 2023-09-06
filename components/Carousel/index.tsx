@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faChevronCircleLeft, faChevronCircleRight, faCircle, faDotCircle } from "@fortawesome/free-solid-svg-icons"
+import { BsRecordCircle, BsRecordCircleFill } from 'react-icons/bs'
+import { BiSolidLeftArrowCircle, BiSolidRightArrowCircle } from 'react-icons/bi'
 
 type Carousel = {
     slides: CarouselItem[];
@@ -63,11 +63,11 @@ export default function Carousel() {
             </div>
             {/* arrow right */}
             <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] right-5 text-4xl rounded-full p-2 text-white/50 cursor-pointer hover:text-primary_500/50'>
-                <FontAwesomeIcon onClick={nextSlide} icon={faChevronCircleRight}/>
+                <BiSolidRightArrowCircle onClick={nextSlide} />
             </div>
             {/* arrow left */}
             <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] left-5 text-4xl rounded-full p-2 text-white/50 cursor-pointer hover:text-primary_500/50'>
-                <FontAwesomeIcon onClick={prevSlide} icon={faChevronCircleLeft} />
+                <BiSolidLeftArrowCircle onClick={prevSlide}/>
             </div>
             {/* title */}
             <div className='absolute left-8 top-[65%] lg:top-[75%] p-2 md:p-4 text-white'>
@@ -77,7 +77,9 @@ export default function Carousel() {
             <div className="absolute left-[50%] top-[90%] flex gap-3 justify-center py-2">
                 {carouselPhotos.map((_ph, index) => (
                     <div key={index} className="text-lg text-white hover:text-primary_300 transition">
-                        <FontAwesomeIcon onClick={() => goToSlide(index)} icon={currentIndex === index ? faDotCircle : faCircle}/>
+                        {
+                            currentIndex === index ? <BsRecordCircle onClick={() => goToSlide(index)}/> : < BsRecordCircleFill onClick={() => goToSlide(index)}/>
+                        }
                     </div>
                 ))}
             </div>

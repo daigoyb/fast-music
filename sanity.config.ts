@@ -4,7 +4,7 @@ import { media } from 'sanity-plugin-media'
 import { visionTool } from '@sanity/vision';
 import schemas from './sanity/schemas'
 import FastLogo from './sanity/components/Logo/FastLogo';
-import { deskToolConfig } from './sanity/desk/deskTool.config';
+import { deskToolConfig } from './sanity/deskConfig/deskTool.config';
 import { 
     dashboardTool,
     sanityTutorialsWidget,

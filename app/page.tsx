@@ -6,8 +6,12 @@ import Link from 'next/link';
 
 import Card from '@/components/Card';
 import Carousel from '@/components/Carousel';
+import { getHome } from '@/sanity/queries/home';
 
-export default function Home() {
+export default async function Home() {
+  const home = await getHome()
+
+  console.log('@@@@@@@@@@@@@@@@@@', JSON.stringify(home, null, 4))
   return (
     <main className="max-w-[1880px] mx-4 md:mx-auto">
       <header>
