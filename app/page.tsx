@@ -10,8 +10,6 @@ import { getHome } from '@/sanity/queries/home';
 
 export default async function Home() {
   const home = await getHome()
-
-  console.log('@@@@@@@@@@@@@@@@@@', JSON.stringify(home, null, 4))
   return (
     <main className="max-w-[1880px] mx-4 md:mx-auto">
       <header>
@@ -33,7 +31,7 @@ export default async function Home() {
             </nav>
           </div>
       </header>
-      <Carousel />
+      <Carousel carouselItems={home[0].carousel}/>
       <section className='grid grid-cols-2 gap-4 mt-4 md:grid-cols-6'>
         {/* Cards de aulas -> docs do sanity */}
         <Card 

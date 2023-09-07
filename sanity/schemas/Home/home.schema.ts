@@ -20,7 +20,7 @@ export const homeType = defineType({
                 to: [{type: 'instrument'}],
                 title: 'Referência do instrumento'
             })],
-            validation: (rule) => rule.max(6).error('Máximo de 6 instrumentos'),
+            validation: (rule) => [rule.max(6).error('Máximo de 6 instrumentos')],
             options: {
                 sortable: true,
             }
