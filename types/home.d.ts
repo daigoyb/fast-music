@@ -13,5 +13,13 @@ export type CarouselProps = {
 }
 
 export type InstrumentClass = {
-
+    instrumentIcon: {
+        provider: string,
+        name: string
+    },
+    instrumentSlug: {
+        current: string,
+    },
+    instrumentName: string,
+    _id: string
 }

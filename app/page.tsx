@@ -7,9 +7,11 @@ import Link from 'next/link';
 import Card from '@/components/Card';
 import Carousel from '@/components/Carousel';
 import { getHome } from '@/sanity/queries/home';
+import DynamicIcon from '@/components/DynamicIcon';
 
 export default async function Home() {
   const home = await getHome()
+  console.log(JSON.stringify(home, null, 4))
   return (
     <main className="max-w-[1880px] mx-4 md:mx-auto">
       <header>
@@ -34,7 +36,16 @@ export default async function Home() {
       <Carousel carouselItems={home[0].carousel}/>
       <section className='grid grid-cols-2 gap-4 mt-4 md:grid-cols-6'>
         {/* Cards de aulas -> docs do sanity */}
-        <Card 
+        {
+          home[0].classes.map((instrument) => (
+            <Card 
+              cardText={<div><p>Aulas de <strong>{instrument.instrumentName}</strong></p></div>}
+              icon={<DynamicIcon icon={instrument.instrumentIcon.name} lib={instrument.instrumentIcon.provider} fallback={null} size='2em'/>}
+              slug={instrument.instrumentSlug.current}
+            />
+          ))
+        }
+        {/* <Card 
           icon={<FontAwesomeIcon size='3x' icon={faGuitar}/>}
           cardText={<div><p>Aulas de <strong>Violão</strong></p></div>}
           slug='/'
@@ -63,7 +74,7 @@ export default async function Home() {
           icon={<FontAwesomeIcon size='3x' icon={faGuitar}/>}
           cardText={<div><p>Aulas de <strong>Violão</strong></p></div>}
           slug='/'
-        />
+        /> */}
       </section>
       <section>
         {/* Razões para estudar na fast-music */}

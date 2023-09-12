@@ -13,7 +13,12 @@ export async function getHome(): Promise<HomeSanityProps[]> {
                 redirect,
                 'image': carouselImage.asset->url
             },
-            "classes": instrumentClasses[]->,
+            "classes": instrumentClasses[]->{
+                instrumentIcon,
+                instrumentSlug,
+                instrumentName,
+                _id
+            },
         }`
     )
 }
