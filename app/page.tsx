@@ -1,13 +1,10 @@
-import { faDrum, faGuitar, faChevronCircleRight, faChevronCircleLeft, faDrumSteelpan } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import Image from 'next/image';
 import Link from 'next/link';
 
 import Card from '@/components/Card';
 import Carousel from '@/components/Carousel';
 import { getHome } from '@/sanity/queries/home';
-import DynamicIcon from '@/components/DynamicIcon';
+import { DynamicIcon } from '@/components/DynamicIcon';
 
 export default async function Home() {
   const home = await getHome()
@@ -34,48 +31,33 @@ export default async function Home() {
           </div>
       </header>
       <Carousel carouselItems={home[0].carousel}/>
-      <section className='grid grid-cols-2 gap-4 mt-4 md:grid-cols-6'>
-        {/* Cards de aulas -> docs do sanity */}
-        {
-          home[0].classes.map((instrument) => (
-            <Card 
-              cardText={<div><p>Aulas de <strong>{instrument.instrumentName}</strong></p></div>}
-              icon={<DynamicIcon icon={instrument.instrumentIcon.name} lib={instrument.instrumentIcon.provider} fallback={null} size='2em'/>}
-              slug={instrument.instrumentSlug.current}
-            />
-          ))
-        }
-        {/* <Card 
-          icon={<FontAwesomeIcon size='3x' icon={faGuitar}/>}
-          cardText={<div><p>Aulas de <strong>Violão</strong></p></div>}
-          slug='/'
-        />
-        <Card 
-          icon={<FontAwesomeIcon size='3x' icon={faDrum}/>}
-          cardText={<div><p>Aulas de <strong>Bateria</strong></p></div>}
-          slug='/'
-        />
-        <Card 
-          icon={<FontAwesomeIcon size='3x' icon={faDrumSteelpan}/>}
-          cardText={<div><p>Aulas de <strong>Teclado</strong></p></div>}
-          slug='/'
-        />
-        <Card 
-          icon={<FontAwesomeIcon size='3x' icon={faGuitar}/>}
-          cardText={<div><p>Aulas de <strong>Violão</strong></p></div>}
-          slug='/'
-        />
-        <Card 
-          icon={<FontAwesomeIcon size='3x' icon={faGuitar}/>}
-          cardText={<div><p>Aulas de <strong>Violão</strong></p></div>}
-          slug='/'
-        />
-        <Card 
-          icon={<FontAwesomeIcon size='3x' icon={faGuitar}/>}
-          cardText={<div><p>Aulas de <strong>Violão</strong></p></div>}
-          slug='/'
-        /> */}
-      </section>
+      <div className='flex justify-center align-middle'>
+        <section className='grid grid-cols-2 gap-4 mt-4 md:grid-cols-6'>
+          {/* Cards de aulas -> docs do sanity */}
+          {
+            home[0].classes.map((instrument) => (
+              <Card
+                key={instrument._id}
+                cardText={
+                  <div>
+                    <p>
+                      Aulas de <strong>{instrument.instrumentName}</strong>
+                    </p>
+                  </div>
+                  }
+                icon={
+                  <DynamicIcon 
+                    provider={instrument.instrumentIcon.provider}
+                    nameIcon={instrument.instrumentIcon.name}
+                    propsIcon={{ size: 80 }}
+                  />
+                }
+                slug={instrument.instrumentSlug.current}
+              />
+            ))
+          }
+        </section>
+      </div>
       <section>
         {/* Razões para estudar na fast-music */}
       </section>

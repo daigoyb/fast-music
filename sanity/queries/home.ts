@@ -15,11 +15,17 @@ export async function getHome(): Promise<HomeSanityProps[]> {
             },
             "classes": instrumentClasses[]->{
                 instrumentIcon,
-                instrumentSlug,
+                instrumentSlug{
+                    current
+                },
                 instrumentName,
                 _id
             },
         }`
-    )
+    , {
+        next: {
+            revalidate: 60
+        }
+    })
 }
 

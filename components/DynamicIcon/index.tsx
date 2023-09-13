@@ -1,51 +1,25 @@
-import React, {
-    CSSProperties,
-    Suspense,
-    SVGAttributes,
-    lazy,
-  } from "react";
-  import { IconContext } from "react-icons";
-  
-  interface IconProps {
-    icon: string;
-    lib: string;
-    color?: string;
-    size?: string;
-    className?: string;
-    style?: CSSProperties;
-    attr?: SVGAttributes<SVGElement>;
-    fallback: JSX.Element | null;
+"use client"
+
+import loadable from "@loadable/component"
+import { IconBaseProps, IconType } from "react-icons/lib"
+
+interface typesPropsIcon {
+  nameIcon: string;
+  provider: string;
+  propsIcon?: IconBaseProps
+}
+
+export function DynamicIcon({ nameIcon, provider, propsIcon }: typesPropsIcon): JSX.Element {
+  const providerFix = (provider: string) => {
+    const pv = provider.toLocaleLowerCase();
+    if(pv === 'mdi') return 'md'
+    return pv
   }
-  
-  const DynamicIcon: React.FC<IconProps> = ({ ...props }) => {
-  
-    if (!props.lib || !props.icon) return <div>Could Not Find Icon</div>;
-  
-    const lib = props.lib.toLowerCase();
-    const path = `react-icons/${lib}`;
-    const Icon = lazy(async () => {
-      const module = await import(path);
-      return { default: module[props.icon] };
-    });
-  
-    const value: IconContext = {
-      color: props.color,
-      size: props.size,
-      className: props.className,
-      style: props.style,
-      attr: props.attr
-    };
+  const lib = providerFix(provider);
+  // @ts-expect-error
+  const ElementIcon: IconType = loadable(() => import(`react-icons/${lib}/index.js`), {
+    resolveComponent: (el: JSX.Element) => el[nameIcon as keyof JSX.Element]
+  });
 
-
-  
-    return (
-      <Suspense fallback={props.fallback}>
-        <IconContext.Provider value={value}>
-          <Icon />
-        </IconContext.Provider>
-      </Suspense>
-    );
-  };
-  
-  export default DynamicIcon;
-  
+  return <ElementIcon {...propsIcon} />
+}
