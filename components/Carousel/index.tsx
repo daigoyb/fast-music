@@ -43,7 +43,7 @@ export default function Carousel({carouselItems}: Carousel) {
     return (
         <div className="max-w-[2880px] mt-2 py-4 w-full relative group">
             <div className="transition-colors transform max-w-[100%] h-full bg-center bg-cover">
-                <Link href={carouselItems[currentIndex].redirect ? carouselItems[currentIndex].redirect as Url : '/'}>
+                <Link target="_blank" href={carouselItems[currentIndex].redirect ? carouselItems[currentIndex].redirect as Url : '/'}>
                 <Image
                     src={carouselItems[currentIndex].image}
                     alt={carouselItems[currentIndex].alt}

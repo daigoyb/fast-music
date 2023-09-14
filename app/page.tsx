@@ -8,7 +8,6 @@ import { DynamicIcon } from '@/components/DynamicIcon';
 
 export default async function Home() {
   const home = await getHome()
-  console.log(JSON.stringify(home, null, 4))
   return (
     <main className="max-w-[1880px] mx-4 md:mx-auto">
       <header>

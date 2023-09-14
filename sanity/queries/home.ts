@@ -24,7 +24,7 @@ export async function getHome(): Promise<HomeSanityProps[]> {
         }`
     , {
         next: {
-            revalidate: 60
+            revalidate: 3600
         }
     })
 }

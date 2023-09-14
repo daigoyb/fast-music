@@ -1,5 +1,6 @@
 import './globals.css'
 import { Montserrat } from 'next/font/google'
+import { ClerkProvider } from '@clerk/nextjs'
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -14,8 +15,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="pt-br">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </ClerkProvider>
   )
 }
