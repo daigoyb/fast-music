@@ -1,0 +1,67 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
+}
+
+model Student {
+    id            Int             @id @default(autoincrement())
+    studentName   String
+    // Add other student-related fields here
+    purchases     Purchase[]
+    videoProgress VideoProgress[]
+}
+
+model Video {
+    id            Int             @id @default(autoincrement())
+    videoTitle    String
+    videoUrl      String
+    moduleId      Int
+    submodule     Submodule       @relation(fields: [moduleId], references: [id])
+    duration      Float
+    // Add other video-related fields here
+    videoProgress VideoProgress[]
+
+    @@index([moduleId])
+}
+
+model Purchase {
+    id           Int       @id @default(autoincrement())
+    purchaseDate DateTime
+    studentId    Int
+    moduleId     Int
+    endDate      DateTime
+    student      Student   @relation(fields: [studentId], references: [id])
+    submodule    Submodule @relation(fields: [moduleId], references: [id])
+
+    @@index([moduleId])
+    @@index([studentId])
+}
+
+model Submodule {
+    id                   Int        @id @default(autoincrement())
+    submoduleName        String
+    submoduleDescription String
+    submoduleDifficulty  String
+    instrument           String
+    videos               Video[]
+    purchases            Purchase[]
+}
+
+model VideoProgress {
+    id                   Int      @id @default(autoincrement())
+    watchedDuration      Int // Store the duration in seconds or percentage as needed
+    lastWatchedTimestamp DateTime
+    studentId            Int
+    videoId              Int
+    student              Student  @relation(fields: [studentId], references: [id])
+    video                Video    @relation(fields: [videoId], references: [id])
+
+    // Add other video progress-related fields here
+    @@index([studentId])
+    @@index([videoId])
+}
