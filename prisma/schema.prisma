@@ -11,34 +11,36 @@ datasource db {
 model Student {
     id            Int             @id @default(autoincrement())
     studentName   String
+    studentEmail  String          @unique
     // Add other student-related fields here
     purchases     Purchase[]
     videoProgress VideoProgress[]
 }
 
 model Video {
-    id            Int             @id @default(autoincrement())
-    videoTitle    String
-    videoUrl      String
-    moduleId      Int
-    submodule     Submodule       @relation(fields: [moduleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-    duration      Float
+    id               Int             @id @default(autoincrement())
+    videoTitle       String
+    videoDescription String
+    videoUrl         String
+    submoduleId      Int
+    submodule        Submodule       @relation(fields: [submoduleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    duration         Float
     // Add other video-related fields here
-    videoProgress VideoProgress[]
+    videoProgress    VideoProgress[]
 
-    @@index([moduleId])
+    @@index([submoduleId])
 }
 
 model Purchase {
-    id           Int       @id @default(autoincrement())
+    id           Int         @id @default(autoincrement())
     purchaseDate DateTime
     studentId    Int
-    moduleId     Int
+    submoduleId  Int
     endDate      DateTime
-    student      Student   @relation(fields: [studentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-    submodule    Submodule @relation(fields: [moduleId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    student      Student     @relation(fields: [studentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    submodule    Submodule[] // m-n implicit relation
 
-    @@index([moduleId])
+    @@index([submoduleId])
     @@index([studentId])
 }
 
@@ -49,7 +51,7 @@ model Submodule {
     submoduleDifficulty  String
     instrument           String
     videos               Video[]
-    purchases            Purchase[]
+    purchases            Purchase[] // m-n implicit relation
 }
 
 model VideoProgress {
