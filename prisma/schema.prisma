@@ -12,7 +12,6 @@ model Student {
     id            Int             @id @default(autoincrement())
     studentName   String
     studentEmail  String          @unique
-    // Add other student-related fields here
     purchases     Purchase[]
     videoProgress VideoProgress[]
 }
@@ -20,12 +19,11 @@ model Student {
 model Video {
     id               Int             @id @default(autoincrement())
     videoTitle       String
-    videoDescription String
+    videoDescription String          @db.Text
     videoUrl         String
     submoduleId      Int
     submodule        Submodule       @relation(fields: [submoduleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
     duration         Float
-    // Add other video-related fields here
     videoProgress    VideoProgress[]
 
     @@index([submoduleId])
@@ -63,7 +61,6 @@ model VideoProgress {
     student              Student  @relation(fields: [studentId], references: [id], onDelete: Cascade, onUpdate: Cascade)
     video                Video    @relation(fields: [videoId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-    // Add other video progress-related fields here
     @@index([studentId])
     @@index([videoId])
 }

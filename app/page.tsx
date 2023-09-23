@@ -25,13 +25,13 @@ export default async function Home() {
             <nav className='flex flex-col-reverse items-center gap-2 mt-2 md:flex-row md:gap-8 md:mt-0'>
               <Link href="" className='text-white hover:text-primary_300 transition'>Contato</Link>
               <Link href="" className='text-white hover:text-primary_300 transition'>Entrar</Link>
-              <Link href="" className='p-2 bg-primary_300 text-center rounded-lg hover:bg-primary_500 text-white transition uppercase text-sm'>Matricule-se</Link>
+              <Link href="/sign-up" className='p-2 bg-primary_300 text-center rounded-lg hover:bg-primary_500 text-white transition uppercase text-sm'>Matricule-se</Link>
             </nav>
           </div>
       </header>
       <Carousel carouselItems={home[0].carousel}/>
       <div className='flex justify-center align-middle'>
-        <section className='grid grid-cols-2 gap-4 mt-4 md:grid-cols-6'>
+        <section className='grid grid-cols-2 gap-4 mt-4 md:grid-cols-4'>
           {/* Cards de aulas -> docs do sanity */}
           {
             home[0].classes.map((instrument) => (
