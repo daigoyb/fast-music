@@ -53,11 +53,11 @@ export default function Carousel({carouselItems}: Carousel) {
                 </Link>
             </div>
             {/* arrow right */}
-            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] right-5 text-4xl rounded-full p-2 text-white/50 cursor-pointer hover:text-primary_500/50'>
+            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] right-5 text-6xl rounded-full p-2 text-white/50 cursor-pointer hover:text-primary_300 transition'>
                 <BiSolidRightArrowCircle onClick={nextSlide} />
             </div>
             {/* arrow left */}
-            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] left-5 text-4xl rounded-full p-2 text-white/50 cursor-pointer hover:text-primary_500/50'>
+            <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 -translate-y-[50%] left-5 text-6xl rounded-full p-2 text-white/50 cursor-pointer hover:text-primary_300 transition'>
                 <BiSolidLeftArrowCircle onClick={prevSlide}/>
             </div>
             {/* title */}
@@ -65,9 +65,9 @@ export default function Carousel({carouselItems}: Carousel) {
                 <h2 className='text-3xl md:text-6xl'>{carouselItems[currentIndex].title}</h2>
                 <h4 className='mt-1/2 md:mt-4 text-xl md:text-3xl'>{carouselItems[currentIndex].subtitle}</h4>
             </div>
-            <div className="absolute left-[50%] top-[90%] flex gap-3 justify-center py-2">
+            <div className="absolute top-[85%] left-[45%] lg:left-[50%] lg:top-[90%] flex gap-3 justify-center py-2">
                 {carouselItems.map((photo, index) => (
-                    <div key={photo._key} className="text-lg text-white hover:text-primary_300 transition">
+                    <div key={photo._key} className="text-base lg:text-xl text-white hover:text-primary_300 transition">
                         {
                             currentIndex === index ? <BsRecordCircle onClick={() => goToSlide(index)}/> : < BsRecordCircleFill onClick={() => goToSlide(index)}/>
                         }

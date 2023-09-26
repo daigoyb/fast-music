@@ -23,8 +23,8 @@ export default async function Home() {
               </Link>
             </div>
             <nav className='flex flex-col-reverse items-center gap-2 mt-2 md:flex-row md:gap-8 md:mt-0'>
-              <Link href="" className='text-white hover:text-primary_300 transition'>Contato</Link>
-              <Link href="" className='text-white hover:text-primary_300 transition'>Entrar</Link>
+              <Link href="/contacts" className='text-white hover:text-primary_300 transition'>Contato</Link>
+              <Link href="/sign-in" className='text-white hover:text-primary_300 transition'>Entrar</Link>
               <Link href="/sign-up" className='p-2 bg-primary_300 text-center rounded-lg hover:bg-primary_500 text-white transition uppercase text-sm'>Matricule-se</Link>
             </nav>
           </div>

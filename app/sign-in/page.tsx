@@ -1,11 +1,11 @@
 
-import { SignUp } from '@clerk/nextjs';
+import { SignIn } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 
-export default function SignUpPage() {
+export default function SignInPage() {
     return (
         <div className='flex flex-col items-center'>
             <div className='pt-20'>
@@ -19,12 +19,9 @@ export default function SignUpPage() {
                 </Link>
             </div>
             <div className='pt-4'>
-                <SignUp 
+                <SignIn
                     appearance={
                         {
-                            layout: {
-                                
-                            },
                             elements: {
                                 formButtonPrimary: "bg-primary_300 hover:bg-primary_500"
                             }
