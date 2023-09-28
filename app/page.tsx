@@ -1,34 +1,15 @@
-import Image from 'next/image';
-import Link from 'next/link';
-
 import Card from '@/components/Card';
 import Carousel from '@/components/Carousel';
 import { getHome } from '@/sanity/queries/home';
 import { DynamicIcon } from '@/components/DynamicIcon';
+import Header from '@/components/Header';
 
 export default async function Home() {
-  const home = await getHome()
+  const home = await getHome();
+
   return (
     <main className="max-w-[1880px] mx-4 md:mx-auto">
-      <header>
-          <div className='mx-4 md:flex md:justify-between'>
-            <div className='flex justify-center'>
-              <Link href="/">
-                <Image 
-                  src='/logo-fast.png'
-                  alt='logo da fast music'
-                  width={396}
-                  height={90}
-                />
-              </Link>
-            </div>
-            <nav className='flex flex-col-reverse items-center gap-2 mt-2 md:flex-row md:gap-8 md:mt-0'>
-              <Link href="/contacts" className='text-white hover:text-primary_300 transition'>Contato</Link>
-              <Link href="/sign-in" className='text-white hover:text-primary_300 transition'>Entrar</Link>
-              <Link href="/sign-up" className='p-2 bg-primary_300 text-center rounded-lg hover:bg-primary_500 text-white transition uppercase text-sm'>Matricule-se</Link>
-            </nav>
-          </div>
-      </header>
+      <Header />
       <Carousel carouselItems={home[0].carousel}/>
       <div className='flex justify-center align-middle'>
         <section className='grid grid-cols-2 gap-4 mt-4 md:grid-cols-4'>
