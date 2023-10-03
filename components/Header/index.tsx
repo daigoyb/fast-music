@@ -26,9 +26,6 @@ export default function Header() {
                     { isSignedIn ? 
                         (
                             <>
-                                <div>
-                                    <UserButton afterSignOutUrl="/"/>
-                                </div>
                                 <SignOutButton>
                                     <Link 
                                         className='p-2 bg-primary_300 text-center rounded-lg hover:bg-primary_500 text-white transition uppercase text-sm'
@@ -37,6 +34,9 @@ export default function Header() {
                                         Sair
                                     </Link>
                                 </SignOutButton>
+                                <div>
+                                    <UserButton afterSignOutUrl="/"/>
+                                </div>
                             </>
                         ) : (
                             <>
