@@ -8,7 +8,7 @@ export const carouselItemType = defineType({
     icon: MdViewCarousel,
     fields: [
         defineField({
-            title: 'Carousel Image',
+            title: 'Imagem do Carrosel',
             name: 'carouselImage',
             type: 'image',
             options: {
@@ -16,19 +16,19 @@ export const carouselItemType = defineType({
             },
         }),
         defineField({
-            title: 'Title',
+            title: 'Título',
             name: 'title',
             type: 'string',
         }),
         defineField({
-            title: 'Subtitle',
+            title: 'Subtítulo',
             name: 'subtitle',
             type: 'string'
         }),
         defineField({
-            title: 'Alt',
+            title: 'Descrição da image',
             name: 'alt',
-            type: 'string'
+            type: 'string',
         }),
         defineField({
             title: 'Redirect',
