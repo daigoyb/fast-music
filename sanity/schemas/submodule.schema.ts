@@ -27,6 +27,11 @@ export const submoduleType = defineType({
             }
         }),
         defineField({
+            name: 'submoduleDescription',
+            title: 'Descrição do submódulo',
+            type: 'Text'
+        }),
+        defineField({
             name: 'submoduleVideos',
             title: 'Vídeos do submódulo',
             type: 'array',
