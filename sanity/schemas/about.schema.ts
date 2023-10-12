@@ -8,12 +8,23 @@ export const aboutType = defineType({
     icon: GrCircleInformation,
     fields: [
         defineField({
+            name: 'title',
+            title: 'Title',
+            type: 'string',
+        }),
+        defineField({
             name: 'aboutSite',
             title: 'Sobre o site',
             type: 'array',
             of: [
-                {type: 'block'},
-                {type: 'image', icon: GrImage}
+                {type: 'image', icon: GrImage},
+                {
+                    type: 'block',
+                    lists: [
+                        {title: 'Bullet', value: 'bullet'},
+                        {title: 'Numbered', value: 'number'}
+                    ]
+                },
             ]
         })
     ]

@@ -5,7 +5,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { RiPagesFill } from 'react-icons/ri'
 
 
-const excludedSiteIds = ['siteSettings', 'home', 'carouselItem']
+const excludedSiteIds = ['siteSettings', 'home', 'carouselItem', 'contacts']
 
 export const deskToolConfig: DeskToolOptions = {
     defaultDocumentNode: getDefaultDocumentNode,
