@@ -12,7 +12,6 @@ interface Carousel {
     carouselItems: CarouselProps[]
 }
 
-
 export default function Carousel({carouselItems}: Carousel) {    
     const [currentIndex, setCurrentIndex] = useState(0)
 

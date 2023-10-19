@@ -2,7 +2,7 @@ import { groq } from 'next-sanity'
 import { client } from '../client/sanity.client'
 import { HomeSanityProps } from '@/types/home'
 
-export async function getHome(): Promise<HomeSanityProps[]> {
+export function getHome(): Promise<HomeSanityProps[]> {
     return client.fetch(
         groq`*[_type == "home"]{
             carousel[]{
@@ -21,11 +21,12 @@ export async function getHome(): Promise<HomeSanityProps[]> {
                 instrumentName,
                 _id
             },
-        }`
-    , {
-        next: {
-            revalidate: 3600
+        }`, 
+        {
+            next: {
+                revalidate: 3600
+            }
         }
-    })
+    );
 }
 

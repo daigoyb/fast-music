@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image"
-import { SignOutButton, UserButton, useUser } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 
 export default function Header() {
