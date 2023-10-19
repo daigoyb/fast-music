@@ -7,13 +7,15 @@ import { BiSolidLeftArrowCircle, BiSolidRightArrowCircle } from 'react-icons/bi'
 import { CarouselProps } from "@/types/home"
 import Link from "next/link"
 import { Url } from "next/dist/shared/lib/router/router"
+import useWindowSize from "@/hooks/useWindowSize"
 
 interface Carousel {
     carouselItems: CarouselProps[]
 }
 
-export default function Carousel({carouselItems}: Carousel) {    
+export default function Carousel({carouselItems}: Carousel) {
     const [currentIndex, setCurrentIndex] = useState(0)
+    const { width, height } = useWindowSize()
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -40,14 +42,14 @@ export default function Carousel({carouselItems}: Carousel) {
     }
 
     return (
-        <div className="max-w-[2880px] mt-2 py-4 w-full relative group">
-            <div className="transition-colors transform max-w-[100%] h-full bg-center bg-cover">
+        <div className="max-w-[2880px] w-full relative group">
+            <div className="transition-colors transform max-w-[100%] bg-center bg-cover">
                 <Link target="_blank" href={carouselItems[currentIndex].redirect ? carouselItems[currentIndex].redirect as Url : '/'}>
                 <Image
                     src={carouselItems[currentIndex].image}
                     alt={carouselItems[currentIndex].alt}
-                    width={2880}
-                    height={1620}
+                    width={width ?? 2880}
+                    height={height ?? 1620}
                 />
                 </Link>
             </div>
