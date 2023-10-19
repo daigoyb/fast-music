@@ -10,7 +10,7 @@ export default function Header() {
 
     return (
         <header>
-            <div className='md:flex md:justify-between'>
+            <div className='mb-4 md:mb-2 md:flex md:justify-between'>
             <div className='flex justify-center'>
                 <Link href="/">
                 <Image 

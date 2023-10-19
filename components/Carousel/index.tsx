@@ -42,8 +42,8 @@ export default function Carousel({carouselItems}: Carousel) {
     }
 
     return (
-        <div className="max-w-[2880px] w-full relative group">
-            <div className="transition-colors transform max-w-[100%] bg-center bg-cover">
+        <div className="max-w-[2880px] h-full relative group">
+            <div className="transition-colors transform bg-center bg-cover">
                 <Link target="_blank" href={carouselItems[currentIndex].redirect ? carouselItems[currentIndex].redirect as Url : '/'}>
                 <Image
                     src={carouselItems[currentIndex].image}
